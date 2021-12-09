@@ -13,9 +13,6 @@ import edu.neu.madcourse.cs5520_a7.R;
 import edu.neu.madcourse.cs5520_a7.postService.CheckAllPosts;
 import edu.neu.madcourse.cs5520_a7.postService.CheckSelfPosts;
 import edu.neu.madcourse.cs5520_a7.postService.CreateNewPost;
-import edu.neu.madcourse.cs5520_a7.stickerService.ReceiveHistoryActivity;
-import edu.neu.madcourse.cs5520_a7.stickerService.SendHistoryActivity;
-import edu.neu.madcourse.cs5520_a7.stickerService.SendStickerActivity;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -31,24 +28,6 @@ public class UserActivity extends AppCompatActivity {
     loginUsername = getIntent().getStringExtra("login_username");
     System.out.println("Login user name: " + loginUsername);
   }
-
-//  public void goToSendSticker(View view) {
-//    Intent intent = new Intent(getBaseContext(), SendStickerActivity.class);
-//    intent.putExtra("login_username", loginUsername);
-//    startActivity(intent);
-//  }
-//
-//  public void goToSendHistory(View view) {
-//    Intent intent = new Intent(getBaseContext(), SendHistoryActivity.class);
-//    intent.putExtra("login_username", loginUsername);
-//    startActivity(intent);
-//  }
-//
-//  public void goToHistory(View view) {
-//    Intent intent = new Intent(getBaseContext(), ReceiveHistoryActivity.class);
-//    intent.putExtra("login_username", loginUsername);
-//    startActivity(intent);
-//  }
 
   public void goToCreateNewPost(View view) {
     Intent intent = new Intent(getBaseContext(), CreateNewPost.class);
