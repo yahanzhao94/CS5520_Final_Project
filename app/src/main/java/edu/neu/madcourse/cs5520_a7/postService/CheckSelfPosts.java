@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -41,6 +42,7 @@ public class CheckSelfPosts extends AppCompatActivity {
   private RecyclerView recyclerView;
   private PostRviewAdapter rviewAdapter;
   private RecyclerView.LayoutManager rLayoutManger;
+  private TextView tv_name;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,8 @@ public class CheckSelfPosts extends AppCompatActivity {
     setContentView(R.layout.activity_check_self_posts);
     mDatabase = FirebaseDatabase.getInstance().getReference();
     loginUsername = getIntent().getStringExtra("login_username");
+    tv_name = findViewById(R.id.tv_name);
+    tv_name.setText(loginUsername);
     getPostByUsername(loginUsername);
   }
 
