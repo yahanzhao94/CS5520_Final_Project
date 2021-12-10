@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Moment">
         <activity
+            android:name=".postService.CheckLikedPosts"
+            android:exported="true" />
+        <activity
             android:name=".postService.CheckSelfPosts"
             android:exported="true" />
         <activity

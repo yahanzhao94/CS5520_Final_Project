@@ -2,9 +2,13 @@ package edu.neu.madcourse.cs5520_a7.postService;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,9 +17,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 import edu.neu.madcourse.cs5520_a7.R;
+import edu.neu.madcourse.cs5520_a7.stickerService.models.Like;
 import edu.neu.madcourse.cs5520_a7.stickerService.models.Post;
 
 public class CheckSelfPosts extends AppCompatActivity {
@@ -24,12 +34,42 @@ public class CheckSelfPosts extends AppCompatActivity {
   private static final String USER_NAME = "username";
 
   private DatabaseReference mDatabase;
+  private String loginUsername;
+
+  private List<Post> posts = new ArrayList<>();
+
+  private RecyclerView recyclerView;
+  private PostRviewAdapter rviewAdapter;
+  private RecyclerView.LayoutManager rLayoutManger;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_check_self_posts);
     mDatabase = FirebaseDatabase.getInstance().getReference();
+    loginUsername = getIntent().getStringExtra("login_username");
+    getPostByUsername(loginUsername);
+  }
+
+  private void createRecyclerView() {
+
+    rLayoutManger = new LinearLayoutManager(this);
+
+    recyclerView = findViewById(R.id.self_post_recycler_view);
+    recyclerView.setHasFixedSize(true);
+
+    rviewAdapter = new PostRviewAdapter(posts);
+    ItemClickListener itemClickListener = new ItemClickListener() {
+      @Override
+      public void onItemClick(int position) {
+      }
+    };
+    rviewAdapter.setOnItemClickListener(itemClickListener);
+
+    recyclerView.setAdapter(rviewAdapter);
+    recyclerView.setLayoutManager(rLayoutManger);
+
+
   }
 
 
@@ -58,8 +98,7 @@ public class CheckSelfPosts extends AppCompatActivity {
   }
 
   private void updatePostsView(List<Post> posts) {
-    for (Post post : posts) {
-      System.out.println("Self post: " + post.postId);
-    }
+    this.posts = posts;
+    createRecyclerView();
   }
 }

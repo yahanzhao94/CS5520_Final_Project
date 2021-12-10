@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import edu.neu.madcourse.cs5520_a7.R;
 import edu.neu.madcourse.cs5520_a7.postService.CheckAllPosts;
+import edu.neu.madcourse.cs5520_a7.postService.CheckLikedPosts;
 import edu.neu.madcourse.cs5520_a7.postService.CheckSelfPosts;
 import edu.neu.madcourse.cs5520_a7.postService.CreateNewPost;
 
@@ -43,6 +44,12 @@ public class UserActivity extends AppCompatActivity {
 
   public void goToCheckSelfPosts(View view) {
     Intent intent = new Intent(getBaseContext(), CheckSelfPosts.class);
+    intent.putExtra("login_username", loginUsername);
+    startActivity(intent);
+  }
+
+  public void goToCheckLikedPosts(View view) {
+    Intent intent = new Intent(getBaseContext(), CheckLikedPosts.class);
     intent.putExtra("login_username", loginUsername);
     startActivity(intent);
   }
