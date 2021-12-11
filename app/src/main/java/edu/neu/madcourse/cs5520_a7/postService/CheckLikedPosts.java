@@ -49,7 +49,7 @@ public class CheckLikedPosts extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_check_liked_posts);
+    setContentView(R.layout.fragment_favorites);
     mDatabase = FirebaseDatabase.getInstance().getReference();
     loginUsername = getIntent().getStringExtra("login_username");
     getLikedPostByUsername(loginUsername);

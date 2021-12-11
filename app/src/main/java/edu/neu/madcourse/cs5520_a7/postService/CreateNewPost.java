@@ -48,7 +48,7 @@ public class CreateNewPost extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_create_new_post);
+    setContentView(R.layout.fragment_create_fragments);
 
     //Get location
     System.out.println("Before get location");

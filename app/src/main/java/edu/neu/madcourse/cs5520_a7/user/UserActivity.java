@@ -1,19 +1,21 @@
 package edu.neu.madcourse.cs5520_a7.user;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import android.view.View;
+import android.view.MenuItem;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 
 import edu.neu.madcourse.cs5520_a7.R;
-import edu.neu.madcourse.cs5520_a7.postService.CheckAllPosts;
-import edu.neu.madcourse.cs5520_a7.postService.CheckLikedPosts;
-import edu.neu.madcourse.cs5520_a7.postService.CheckSelfPosts;
-import edu.neu.madcourse.cs5520_a7.postService.CreateNewPost;
+import edu.neu.madcourse.cs5520_a7.fragments.AccountFragment;
+import edu.neu.madcourse.cs5520_a7.fragments.CreateFragment;
+import edu.neu.madcourse.cs5520_a7.fragments.FavoritesFragment;
+import edu.neu.madcourse.cs5520_a7.fragments.HomeFragment;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -28,30 +30,43 @@ public class UserActivity extends AppCompatActivity {
     setContentView(R.layout.activity_user);
     loginUsername = getIntent().getStringExtra("login_username");
     System.out.println("Login user name: " + loginUsername);
-  }
+    BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+    bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
-  public void goToCreateNewPost(View view) {
-    Intent intent = new Intent(getBaseContext(), CreateNewPost.class);
-    intent.putExtra("login_username", loginUsername);
-    startActivity(intent);
+    // as soon as the application opens the first
+    // fragment should be shown to the user
+    // in this case it is algorithm fragment
+    getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper, new HomeFragment(loginUsername)).commit();
   }
-
-  public void goToCheckAllPosts(View view) {
-    Intent intent = new Intent(getBaseContext(), CheckAllPosts.class);
-    intent.putExtra("login_username", loginUsername);
-    startActivity(intent);
-  }
-
-  public void goToCheckSelfPosts(View view) {
-    Intent intent = new Intent(getBaseContext(), CheckSelfPosts.class);
-    intent.putExtra("login_username", loginUsername);
-    startActivity(intent);
-  }
-
-  public void goToCheckLikedPosts(View view) {
-    Intent intent = new Intent(getBaseContext(), CheckLikedPosts.class);
-    intent.putExtra("login_username", loginUsername);
-    startActivity(intent);
-  }
+  private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+      // By using switch we can easily get
+      // the selected fragment
+      // by using there id.
+      Fragment selectedFragment = null;
+      switch (item.getItemId()) {
+        case R.id.ic_home:
+          selectedFragment = new HomeFragment(loginUsername);
+          break;
+        case R.id.ic_add:
+          selectedFragment = new CreateFragment(loginUsername);
+          break;
+        case R.id.ic_favorites:
+          selectedFragment = new FavoritesFragment(loginUsername);
+          break;
+        case R.id.ic_account:
+          selectedFragment = new AccountFragment(loginUsername);
+          break;
+      }
+      // It will help to replace the
+      // one fragment to other.
+      getSupportFragmentManager()
+              .beginTransaction()
+              .replace(R.id.fl_wrapper, selectedFragment)
+              .commit();
+      return true;
+    }
+  };
 
 }

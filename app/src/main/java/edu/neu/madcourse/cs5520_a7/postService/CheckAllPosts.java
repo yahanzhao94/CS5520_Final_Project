@@ -49,7 +49,7 @@ public class CheckAllPosts extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_check_all_posts);
+    setContentView(R.layout.fragment_home);
     mDatabase = FirebaseDatabase.getInstance().getReference();
     loginUsername = getIntent().getStringExtra("login_username");
     getPostByUsername(loginUsername);

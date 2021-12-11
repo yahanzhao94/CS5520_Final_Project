@@ -47,7 +47,7 @@ public class CheckSelfPosts extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_check_self_posts);
+    setContentView(R.layout.fragment_account);
     mDatabase = FirebaseDatabase.getInstance().getReference();
     loginUsername = getIntent().getStringExtra("login_username");
     tv_name = findViewById(R.id.tv_name);
