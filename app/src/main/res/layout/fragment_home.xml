@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".postService.CheckLikedPosts">
+    tools:context=".fragments.HomeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/liked_post_recycler_view"
+        android:id="@+id/all_post_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/darker_gray"

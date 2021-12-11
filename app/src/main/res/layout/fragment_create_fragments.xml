@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".postService.CreateNewPost">
+    tools:context=".fragments.CreateFragment">
 
     <ImageView
         android:id="@+id/happy_new_year2"
