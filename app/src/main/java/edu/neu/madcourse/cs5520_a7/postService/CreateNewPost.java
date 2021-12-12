@@ -43,6 +43,7 @@ public class CreateNewPost extends AppCompatActivity {
   private LocationManager locationManager;
   private LocationListener locationListener;
   private String currentLocation;
+  private TextView txtLat;
 
 
   @Override
@@ -137,14 +138,17 @@ public class CreateNewPost extends AppCompatActivity {
   private void getLocation() {
     locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
     Location location = locationManager.getLastKnownLocation("gps");
+    txtLat = findViewById(R.id.textView);
     locationListener = new LocationListener() {
       @Override
       public void onLocationChanged(@NonNull Location location) {
         currentLocation = (location.getLatitude() + ", " + location.getLongitude());
+        txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
       }
     };
     if (location != null) {
       currentLocation = (location.getLatitude() + ", " + location.getLongitude());
+      txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
     } else {
       locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
     }

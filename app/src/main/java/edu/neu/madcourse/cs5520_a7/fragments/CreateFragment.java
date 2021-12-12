@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -52,6 +53,7 @@ public class CreateFragment extends Fragment {
     private LocationManager locationManager;
     private LocationListener locationListener;
     private String currentLocation;
+    private TextView txtLat;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String LOGIN_USER_NAME = "LOGIN_USER_NAME";
@@ -187,14 +189,17 @@ public class CreateFragment extends Fragment {
     private void getLocation() {
         locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
         Location location = locationManager.getLastKnownLocation("gps");
+        txtLat = getActivity().findViewById(R.id.textView);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(@NonNull Location location) {
                 currentLocation = (location.getLatitude() + ", " + location.getLongitude());
+                txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
             }
         };
         if (location != null) {
             currentLocation = (location.getLatitude() + ", " + location.getLongitude());
+            txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
         } else {
             locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
         }
