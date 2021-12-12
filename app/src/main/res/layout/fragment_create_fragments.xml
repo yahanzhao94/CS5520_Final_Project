@@ -11,63 +11,60 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginEnd="84dp"
-        android:layout_marginBottom="228dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/heart2"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/happy_new_year" />
 
     <ImageView
         android:id="@+id/heart2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="228dp"
+        android:layout_marginStart="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/heart" />
 
     <ImageView
         android:id="@+id/love"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/heart2"
+        android:layout_marginTop="156dp"
         app:layout_constraintEnd_toStartOf="@+id/team_work2"
-        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postText"
-        app:layout_constraintVertical_bias="0.772"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/love" />
 
     <ImageView
         android:id="@+id/team_work2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/happy_new_year2"
+        android:layout_marginTop="156dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.729"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postText"
-        app:layout_constraintVertical_bias="0.992"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/team_work" />
 
     <Button
         android:id="@+id/create_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="28dp"
         android:text="Create"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.784" />
+        app:layout_constraintVertical_bias="0.729" />
 
     <EditText
         android:id="@+id/postText"
-        android:layout_width="270dp"
-        android:layout_height="94dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter post text here..."
         android:inputType="textPersonName"
@@ -85,10 +82,10 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/create_post"
-        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heart2"
-        app:layout_constraintVertical_bias="0.435" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.766" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
